@@ -1,0 +1,24 @@
+---
+layout: post
+title: Desactivar el cacheo con Jquery
+categories:
+- jquery
+- rails
+---
+
+%h1 Desactivar el cacheo con Jquery
+
+%p
+  Me ha pasado desarrollando un sistema de consulta de estados de cuenta, que una vez actualizados los datos de 
+  la cuenta, no me regrescaba la informacion que consultaba el cliente del otro lado.
+  
+%p
+  La consulta de la informacion se hace por medios de un par de Combos de seleccion encadenados.
+  Me estaba valiendo del metodo de jquery *$.getJson*, pero este siempre me devolvia 304, y por consiguiente
+  no me mostraba los cambios en el estado de la cuenta.    
+  
+%p
+  Esto era porque en Rails en entornos que no son de desarrollo utiliza cacheo.  
+  
+  
+bla bla seguir en casa.  
