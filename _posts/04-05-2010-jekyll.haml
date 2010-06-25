@@ -1,0 +1,155 @@
+---
+layout: post
+title: Jekyll
+categories: 
+- ruby
+---
+
+%h1 Jekyll
+
+%p Jekyll es un generador de sitios est&aacute;ticos, escrito en *Ruby*
+
+%p Esta enfocado en la generaci&oacute;n de sitios tipo blog, pero puede ser configurado para generar cualquier tipo de sitio est&aacute;tico.
+
+%p Gracias a que jekyll genera un sitio de codigo est&aacute;tico, puede ser albergado en cualquier lugar que puedas hostear sitios est&aacute;ticos, simplemente con tu web server favorito (Apache).
+
+%p Todo parte de un directorio de templates que representan el crudo del sitio.
+
+%p Este directorio es procesado por distintos filtros.
+
+%ul
+  %li haml
+  %li textile
+  %li sass
+
+%p Luego se obtiene el sitio resultante en Html puro.
+
+%h3 Instalaci&oacute;n:
+:coderay
+  #!plain
+  gem install jekyll
+  
+%p 
+  Particularmente yo estoy utilizando una version distinta que extraje desde github
+  %a(href="http://github.com/henrik/jekyll")
+    henrik-jekyll
+  , para tener HAML y SASS. 
+:coderay
+  #!plain
+  gem install henrik-jekyll -s http://gems.github.com   
+
+%h3 Estructura B&aacute;sica:
+
+%p 
+  Basicamente esta compuesto por 2 directorios '_layouts', '_posts' , 1 archivo de configuraci&oacute;n '_config.yml' 
+  y 1 archivo que genera la estructura principal 'index.haml' (donde por ejemplo se muestra el indice de posts.)
+
+
+%p
+  Todos los archivos, ya sean los posts o los archivos que van a ser procesados por jekyll, llevan en la parte superior
+  variables de configuraci&oacute;n, separadas del resto del archivo, por 3 guiones (---).
+%p
+  Dentro de este espacio, se debe especificar:
+  
+%ul
+  %li layout: en que layout se va a mostrar el contenido.
+  %li title: el titulo del post o p&aacite;gina
+  %li categories: las categor&iacute;as a las que pertenece el post.
+
+:coderay
+  #!plain
+  
+  ---
+  layout: base
+  title: Un titulo
+  categories:
+  -nombre1
+  -nombre2
+  ---
+
+%p El directorio _layouts contiene los layouts de sitio.
+
+%p base.haml
+:coderay
+  #!plain
+  %html
+    %head
+    %body
+      = content
+      
+%p post.haml
+:coderay
+  #!plain
+  ---
+  layout: base
+  ---
+  = content
+      
+%p El directorio _posts contiene los articulos del blog, puden ser .textile, .html, .haml, etc.
+
+%p 04-05-2010-nombre-del-posts.textile
+
+:coderay
+  #!textile
+  ---
+  layout: post
+  title: Nombre del Post
+  categories: 
+  - ruby
+  ---
+  
+  Contenido del post en textile.
+
+%p index.haml
+:coderay
+  #!textile
+  ---
+  layout: base
+  title: indice
+  ---
+  - site.posts.each do |post|
+    %a{:href => post.url }
+      = post.title
+
+%p En el archivo de configuraci&oacute;n _config.yml, se escribe la configuraci&oacute;n de jekyll, simplemente para ahorrase de escribir parametros al comando jekyll que genera el sitio.
+
+%h3 Configuraci&oacute;n:
+
+%p Ejemplo de _config.yml:
+
+:coderay
+  #!yaml
+
+  destination: ./_site
+  auto:        false
+  lsi:         false
+  server_port: 4000
+  haml: true
+  sass: true
+  pygments:    false
+  markdown:    maruku
+  permalink:   date
+  maruku:
+    use_tex:    false
+    use_divs:   false
+    png_dir:    images/latex
+    png_url:    /images/latex
+    
+%h3 Finalmente:
+%p Para ver el sitio resultante ejecutamos.
+
+:coderay
+  #!plain
+  
+  jekyll
+  
+%p 
+  Esto nos va a generar nuestro sitio, en la carpeta por defecto _site o en la carpeta que se le haya especificado
+  en el archivo de configuraci&oacute;n.
+
+%p Mas informaci&oacute;n sobre jekyll en:
+%ul
+  %li
+    %a(href="http://www.jekyllrb.com" target="_blank") www.jekyllrb.com
+  %li
+    %a(href="http://www.github.com/mojombo/jekyll" target="_blank") http://www.github.com/mojombo/jekyll

@@ -1,0 +1,121 @@
+---
+layout: post
+title: Pintando la consola MacOS
+categories:
+- bash
+---
+
+%h1 Pintando la consola en MacOS Leopard
+
+%p
+  Para activar los colores en el comando ls
+
+%h3 Primero:
+
+%p
+  Agregar en .bash_profile
+
+:coderay
+  #!plain
+  export CLICOLOR=1
+  export LSCOLORS=exfxcxdxbxegedabagacad
+  alias ls='ls -G'
+
+
+%p
+  Con la variable LSCOLORS, le estamos diciendo al sistema que color queremos para cada tipo de elemento y con
+  el alias estamos activando los colores.
+%p 
+  El formato de la variable LSCOLORS, es posicional y consta de un par de d&iacute;gitos para describir el color de la letra 
+  y el color del fondo del elemento, en este orden (LETRA-FONDO).
+
+:coderay
+  #!plain
+  1.   directory
+  2.   symbolic link
+  3.   socket
+  4.   pipe
+  5.   executable
+  6.   block special
+  7.   character special
+  8.   executable with setuid bit set
+  9.   executable with setgid bit set
+  10.  directory writable to others, with sticky bit
+  11.  directory writable to others, without sticky bit  
+
+%p Los colores son los siguientes.
+
+:coderay
+  #!plain  
+  a -> black
+  b -> red
+  c -> green
+  d -> brown
+  e -> blue
+  f -> magenta
+  g -> cyan
+  h -> light grey
+  A -> bold black, usually shows up as dark grey
+  B -> bold red
+  C -> bold green
+  D -> bold brown, usually shows up as yellow
+  E -> bold blue
+  F -> bold magenta
+
+%strong Si lo ponemos en pr&aacute;ctica.
+%p
+  Vamos a describir la configuracion de colores que elegimos en le inicio de este post.
+
+:coderay
+  LSCOLORS=exfxcxdxbxegedabagacad
+
+%p
+  %table.tabla
+    %tr
+      %th Elemento
+      %th D&iacute;gitos
+      %th Colores
+    %tr
+      %td directorio
+      %td ex
+      %td azul - ninguno 
+    %tr
+      %td vinculo simb&oacute;lico
+      %td fx
+      %td magenta - ninguno 
+    %tr
+      %td socket
+      %td cx
+      %td verde - ninguno 
+    %tr
+      %td pipe
+      %td dx
+      %td marron - ninguno 
+    %tr
+      %td ejecutable
+      %td bx
+      %td rojo - ninguno 
+    %tr
+      %td block special
+      %td eg
+      %td azul - cyan 
+    %tr
+      %td character special
+      %td ed
+      %td azul - marron 
+    %tr
+      %td executable with setuid bit set
+      %td ab
+      %td negro - rojo 
+    %tr
+      %td executable with setgid bit set
+      %td ag
+      %td negro - cyan
+    %tr
+      %td directory writable to others, with sticky bit
+      %td ac
+      %td negro - verde
+    %tr
+      %td directory writable to others, without sticky bit
+      %td ad
+      %td negro - marron

@@ -1,0 +1,70 @@
+%html
+  %head
+    %link{:href => "/css/base.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "/css/accordion.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+
+    %link{ :href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
+    %script(src="/js/jquery-1.4.2.min.js")
+    %script(src="/js/jquery-ui.min.js")
+    %script(src="/js/jquery.twitter.js")
+    %script(src="/js/app.js")
+    :javascript
+      var disqus_developer = 1;    
+  %body
+    #container
+      #header
+        .block.logo
+          %h1
+            %a(href="/" title="Home")
+              >_ Llopez-Blog
+          .contact-links    
+            %a.twitter(href="http://www.twitter.com/luigibyte" title="Twitter" target="_blank")
+            %a.facebook(href="http://www.facebook.com/luigi.ar" title="Facebook" target="_blank")
+            %a.google(href="mailto:luigibyte@gmail.com" title="Gmail")
+            %a.delicious(href="http://delicious.com/elbyte" title="delicious" target="_blank")
+            %a.mail(href="mailto:luigibyte@gmail.com" title="Email")      
+        #menu.block
+          %ul
+            .column
+              %li
+                %a{:href => "/perfil.html"} Perfil
+              %li
+                %a( href = "http://github.com/llopez" target = "_blank") Repos
+            .column    
+              %li
+                %a(href = "/proyectos.html") Proyectos
+              %li
+                %a(href = "/galeria.html") Galer&iacute;a
+            .column
+              %li
+                %a{:href => "/"} Sitios amigos
+              %li
+                %a(href = "/contacto.html") Contacto
+        #search-block
+          %form(action="" method="post" id="search")
+            %input(type="text" name="q" value="ingrese texto")
+            %input(type="hidden" name="sitesearch")
+          %a.rss{:href => FEED_URL, :title => "Suscribir Rss"}
+          %a.github(href="http://github.com/llopez" title="Github" target="_blank")   
+      .clear
+      #main
+        ~ content
+        .clear
+      #footer
+        .left
+          >_  &copy; Llopez-Blog copyright 2010.
+        .right
+          mejor visto con -> firefox - chrome
+        .clear
+        
+    :javascript
+          (function() {
+          var links = document.getElementsByTagName('a');
+          var query = '?';
+          for(var i = 0; i < links.length; i++) {
+          if(links[i].href.indexOf('#disqus_thread') >= 0) {
+          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+          }
+          }
+          document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/llopez-blog/get_num_replies.js' + query + '"></' + 'script>');
+          })();

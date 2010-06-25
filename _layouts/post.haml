@@ -1,0 +1,16 @@
+---
+layout: base
+---
+#terminal.wide
+  #title
+    = title(page)
+  #content.post
+    = content
+    
+  #disqus_thread
+  :javascript
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = 'http://llopez-blog.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();

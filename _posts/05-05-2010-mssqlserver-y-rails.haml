@@ -1,0 +1,75 @@
+---
+layout: post
+title: Conectar MSSQL con Ruby en Linux
+categories: 
+- ruby
+- linux
+---
+
+%h3 Como conectar una base de datos Microsoft SQL Server con Ruby.
+
+%p Primero, hay que actualizar .bash_profile
+
+:coderay
+  #!PlainText
+  export ODBCINI=/etc/odbc.ini
+  export ODBCSYSINI=/etc
+  export FREETDSCONF=/etc/freetds/freetds.conf
+
+%p Segundo, hay que instalar algunos paquetes de linux
+
+:coderay
+  #!PlainText
+  sudo apt-get install unixodbc unixodbc-dev freetds-dev sqsh tdsodbc 
+
+%p Tercero, la configuraci&oacute;n de FreeTDS
+
+:coderay
+  #!PlainText
+  /etc/freetds$ cat freetds.conf
+  [ACUMENSERVER]
+    host = 192.168.0.10
+    port = 1433
+    tds version = 7.0
+
+%p Cuarto, configuraci&oacute;n de ODBC
+
+:coderay
+  #!PlainText
+  /etc$ cat odbcinst.ini
+  [FreeTDS]
+  Description     = TDS driver (Sybase/MS SQL)
+  Driver          = /usr/lib/odbc/libtdsodbc.so
+  Setup           = /usr/lib/odbc/libtdsS.so
+  CPTimeout       =
+  CPReuse         =
+  FileUsage       = 1
+
+  /etc$ cat odbc.ini
+  [ACUMENSERVER]
+  Driver          = FreeTDS
+  Description     = ODBC connection via FreeTDS
+  Trace           = No
+  Servername      = ACUMENSERVER
+  Database        = ACUMEN  
+
+%p Hasta el momento tenemos ODBC usando FreeTDS para conectarnos a una base de datos MSSQL-Server, solo nos falta integrarlo con Ruby.
+
+:coderay
+  #!PlainText  
+  sudo apt-get install libdbd-odbc-ruby
+
+%p Finalmente podemos verlo funcionando
+
+:coderay
+  #!Ruby
+  #!/usr/bin/env ruby
+  require 'dbi'
+  db = DBI.connect('dbi:ODBC:ACUMENSERVER', 'username', 'password')
+  select = db.prepare('SELECT TOP 10 firstname FROM tblClients')
+  select.execute
+  while rec = select.fetch do
+    puts rec.to_s
+  end
+  db.disconnect
+

@@ -1,0 +1,43 @@
+---
+layout: post
+title: Mephisto Blog
+categories: 
+- rails
+---
+
+%strong
+  Mephisto.
+  
+%p
+  Mephisto es un CMS hecho en Rails.
+
+
+:coderay
+  #!ruby
+
+  class MephistoController < ApplicationController
+    layout nil
+    session :off
+    caches_page_with_references :dispatch
+    cache_sweeper :comment_sweeper
+
+    def dispatch
+      @dispatch_path    = Mephisto::Dispatcher.run(site, params[:path].dup)
+      @dispatch_action  = @dispatch_path.shift
+      @section          = @dispatch_path.shift
+      @dispatch_action == :error ? show_404 : send("dispatch_#{@dispatch_action}")
+    end
+
+    protected
+      def dispatch_redirect
+        @skip_caching = true
+        # @section is the http status
+        # @dispatch_path.first has the headers
+        if @dispatch_path.first.is_a?(Hash)
+          response.headers['Status'] = interpret_status @section
+          redirect_to @dispatch_path.first[:location], :status=>301
+        else
+          head @section
+        end
+      end
+  end

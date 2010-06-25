@@ -1,0 +1,92 @@
+---
+layout: post
+title: Twitter desde la consola.
+categories:
+- ruby
+---
+
+%h1 Twitter desde la consola.
+
+%p
+  Para tener twitter desde una consola en linux, macos, etc
+  
+%strong Primero:
+:coderay
+  #!plain
+  
+  gem install termtter
+  
+%strong Despues:
+%p Ejecuta
+:coderay
+  #!plain
+  termtter
+
+%p Publica un tweet
+
+:coderay
+  #!plain
+
+  > update Hola mundo!!
+
+%p Mas ayuda!!
+  
+:coderay
+  #!plain
+  
+  > help
+
+  alias NAME COMMAND                                   Add alias for any operations
+  block USER                                           Block user
+  delete,del [STATUS ID]                               Delete a status
+  direct list                                          List direct messages
+  direct sent_list                                     List sent direct messages
+  direct,d USERNAME TEXT                               Send direct message
+  eval EXPR                                            evaluate expression
+  exec SHELL_COMMAND                                   execute a shell command
+  exit,quit                                            Exit
+  favorite,fav (ID|@USER|TYPABLE|/WORD)                Mark a status as a favorite
+  favorite_list USERNAME                               show user favorites
+  follow USER                                          Follow user
+  followers [USERNAME]                                 Show user's followers.
+  friends [USERNAME] [-COUNT]                          Show user's friends.
+  help,h                                               Print this help message
+  keyword add KEYWORD                                  Add a highlight keyword
+  keyword clear                                        Clear highlight keywords
+  keyword list                                         List highlight keywords
+  leave USER                                           Leave user
+  limit,lm                                             Show the API limit status
+  list create SLUG [--description VALUE] [--private]   Create list
+  list delete LISTNAME                                 Delete list
+  list follow|add LISTNAME USERNAME                    Follow users to the list
+  list list [USERNAME]                                 Show Lists
+  list remove LISTNAME USERNAME                        Remove user(s) from the list
+  list show LISTNAME                                   Show the detail of list
+  list,l [USERNAME]/[SLUG] [-COUNT]                    List the posts
+  pause                                                Pause updating
+  plug FILE                                            Load a plugin
+  redo,.                                               Execute previous command
+  reload                                               Reload time line
+  remove_alias NAME                                    Remove alias completely
+  replies,r [username]                                 List the replies (from the user)
+  reply,re @USERNAME or STATUS_ID                      Send a reply
+  resume                                               Resume updating
+  retweet,rt (ID|@USER)                                Post a retweet message
+  retweeted_by_me                                      Show retweets posted by you.
+  retweeted_to_me                                      Show retweets posted by friends.
+  retweets ID                                          Show retweets of a tweet
+  retweets_of_me                                       Show tweets of you that have been retweeted by others.
+  search,s TEXT                                        Search for Twitter
+  settings,set                                         Show your settings
+  show ID                                              Show a single status
+  switch USERNAME                                      Switch twitter account.
+  unblock USER                                         Unblock user
+  update,u TEXT                                        Post a new message
+  user search QUERY                                    search users
+  user show USERNAME                                   Show user's profile.
+  
+%p Mas informaci&oacute;n:
+
+%ul
+  %li
+    %a(href="http://github.com/jugyo/termtter") http://github.com/jugyo/termtter

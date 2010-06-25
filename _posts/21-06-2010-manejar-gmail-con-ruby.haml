@@ -1,0 +1,70 @@
+---
+layout: post
+title: Manejar Gmail con Ruby
+categories:
+- ruby
+---
+%h2
+  Manejar Gmail con Ruby
+%p
+  Con el correr del tiempo, la cantidad de informaci&oacute;n que uno puede tener guardada en su correo, a crecido considerablemente
+  ya que los proveedores de este servicio ahora no se preocupan por el tama&ntilde;o de las casillas de correo.
+%p
+  Esto ha repercutido en el usuario, ya que ahora no tiene la necesidad de ir borrando periodicamtne los correos viejos.
+%p
+  Esto desenboca en un correo, lleno de basura que uno ya no utiliza mas. Puede que esto no traiga mayores problemas, pero 
+  si eras meticuloso y te gusta tener todo ordenado, seguramente este post te resulte interesante.
+%p
+  Una de las cosas mas engorrosas y aburridas del correo electronico, es organizarlo.
+%p
+  Borrar correo viejo desde el webmail, se vuelve una tarea lenta e interminable.
+  
+%h2 Listo...
+
+%strong Primero:
+%p Instaci&oacute;n
+:coderay
+  #!plain
+  gem install ruby-gmail
+  
+%strong Segundo:
+%p Iniciar una sessi&oacute;n
+:coderay
+  #!ruby
+  
+  require 'gmail'
+  gmail = Gmail.new(usuario, clave)
+  gmail.logout
+  
+%p Contando el correo
+:coderay
+  #!ruby
+
+  gmail.inbox.count #total de email
+  gmail.inbox.count(:read) #leidos
+  gmail.inbox.count(:unread) #no leidos
+    
+%p Filtrando correos y contando
+:coderay
+  #!ruby
+  
+  gmail.inbox.count(:after => Date.parse("2010-02-20"), :before => Date.parse("2010-03-20"))
+  gmail.inbox.count(:on => Date.parse("2010-04-15"))
+  gmail.inbox.count(:from => "myfriend@gmail.com")
+  gmail.inbox.count(:to => "directlytome@gmail.com")
+
+%p Recuperando correo
+:coderay
+  #!ruby
+
+  Gmail.new(usuario, clave) do |gmail|
+    gmail.inbox.emails(:unread).each do |email|
+      puts email.subject
+    end  
+  end
+  
+%p
+  El repositio oficial de la gema en git:
+  %a(href="http://github.com/dcparker/ruby-gmail" target="_blank")
+    http://github.com/dcparker/ruby-gmail
+  
