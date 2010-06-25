@@ -1,0 +1,216 @@
+body
+  font-family: monospace
+  margin: 0
+  padding: 0
+  background: url(/images/bg_opa.png)
+  color: white
+  img
+    border: none
+#container
+  margin: 0 auto
+  width: 800px
+  //border: 1px solid
+  padding: 0.5em
+  #header
+    height: 100px
+    .logo
+      width: 30%
+      h1
+        margin-bottom: 0
+        a
+          color: white
+          text-decoration: none
+    .block
+      float: left
+    #search-block
+      float: right
+    #menu
+      ul
+        padding: 0
+        list-style: none
+        li
+          margin: 0.5em
+          background: black
+          a
+            color: white
+      .column
+        float: left
+        margin-left: 1.5em   
+      .first
+        margin-left: 1em
+  #footer
+    width: 100%
+    background: black
+    margin-top: 1em
+    .left
+      float: left
+    .right
+      float: right
+  #main
+    #sidebar
+      float: left
+      width: 29%
+      margin-left: 0.5em
+      .block
+        display: block
+        //border: 1px solid 
+    #terminal
+      float: left
+      .post
+        line-height: 1.5em
+      #content
+        background: url(/images/bg_terminal.png)
+        color: #bbb
+        padding: 1em
+        a
+          text-decoration: none
+          color: white
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+        li
+          margin: 1em
+          &:hover
+            background: #222
+          span.date
+            float: right
+          span.plugin
+            a
+              color: violet
+          span.ruby
+            a
+              color: red
+          span.jquery
+            a
+              color: blue
+          span.rails
+            a
+              color: orange
+          span.bash
+            a
+              color: grey
+      #title
+        color: black
+        -moz-border-radius-topleft: 0.5em
+        -moz-border-radius-topright: 0.5em
+        -webkit-border-radius: 0.5em 0.5em 0 0
+        border-radius: 0.5em 0.5em 0 0
+        padding: 0.3em
+        font-size: 1.3em
+        font-weight: bold
+        background: url(/images/textura-titulo-terminal.png) repeat-x
+
+.clear
+  clear: both
+.wide
+  width: 100%
+.tiny
+  width: 70%
+
+
+#twitter
+  ul
+    padding: 0
+    list-style: none
+    li
+      margin: 0.7em
+      span
+        background-color: black
+
+form#search
+  input[type=text]
+    font-size: 1em
+    color: white
+    border: 1px solid #222
+    background: url(/images/lupa.png) black no-repeat
+    text-indent: 22px
+    height: 23px
+    font-weight: bold
+
+
+@mixin rounded($r)
+  -moz-border-radius: $r
+  -webkit-border-radius: $r
+  border-radius: $r
+
+a.category
+  text-decoration: none
+
+.code
+  line-height: 1.3em
+  background-color: #111
+  border: 1px solid #222
+  padding-left: 1em
+
+.yaml
+  @extend .code
+  color: orange
+
+.contact-links
+  margin: 0.5em
+
+.social-icon
+  margin: 0.2em
+  float: left
+  width: 30px
+  height: 30px  
+  background-image: url(/images/min.jpg)
+
+.twitter
+  @include rounded(0.5em)
+  @extend .social-icon
+  background-position: 337px 102px
+  
+.facebook
+  @include rounded(0.5em)
+  @extend .social-icon
+  background-position: 51px 206px
+	
+.google
+  @include rounded(0.5em)
+  @extend .social-icon
+  background-position: 146px 154px
+.delicious
+  @include rounded(0.5em)
+  @extend .social-icon
+  background-position: 51px 258px
+.mail
+  @include rounded(0.5em)
+  @extend .social-icon
+  background-position: 146px 205px
+.github
+  margin: 0.2em
+  float: left
+  background: url(/images/github-icon.png) no-repeat
+  background-position: -4px -6px
+  width: 40px
+  height: 40px
+.rss
+  float: left
+  @include rounded(0.7em)
+  background: url(/images/rss.gif) no-repeat
+  background-position: -4px -4px  
+  width: 41px
+  height: 41px  
+  
+
+img.avatar
+  float: right
+  margin: -3em 1em
+  
+#images
+  img
+    width: 25%
+    margin: 1em
+    border: 0.5em solid #111
+    
+table.tabla
+  color: #bbb
+  width: 100%
+  border-spacing: 0
+  tr
+    th
+      background: #222
+    td
+      background: #111
