@@ -1,4 +1,4 @@
-h1. My blog
+h1. My blog made with Jekyll and Sinatra
 
 My Blog using *jekyll*, a static site generator written in *Ruby*.
 
