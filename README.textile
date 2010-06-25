@@ -2,4 +2,4 @@ h1. My blog
 
 My Blog using *jekyll*, a static site generator written in *Ruby*.
 
-"www.llopez.heroku.com (myblog)":http://www.llopez.heroku.com
+"llopez.heroku.com (myblog)":http://llopez.heroku.com
