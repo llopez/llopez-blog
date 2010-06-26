@@ -1,9 +1,17 @@
+!!! Strict
 %html
   %head
     %link{:href => "/css/base.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "/css/accordion.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
-
     %link{ :href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
+    %meta{'name' => 'description', :content => 'Es un blog personal de programación'}
+    %meta{'name' => 'keywords', :content => 'blog, BLOG, Blog, Programación, PROGRAMACION, programación, Ruby, ruby, RUBY, Rails, RAILS, rails, jquery, Jquery, JQUERY, BASH, Bash, Gratis, GRATIS, gratuito, free, Free, FREE, Tecnología, TECNOLOGIA, nestor luis lopez'}
+    %meta{'name' => 'copyright', :content => 'Luis Lopez'}
+    %meta{'name' => 'robots', :content => 'FOLLOW,INDEX'}
+    %meta{'name' => 'googlebot', :content => 'FOLLOW,INDEX'}
+    %meta{ 'http-equiv' => "Content-Language", :content=>"es-AR"}
+    %title
+      Llopez Blog
     %script(src="/js/jquery-1.4.2.min.js")
     %script(src="/js/jquery-ui.min.js")
     %script(src="/js/jquery.twitter.js")
@@ -18,11 +26,8 @@
           %h1
             %a(href="/" title="Home")
               >_ Llopez-Blog
-          .contact-links    
-            %a.twitter(href="http://www.twitter.com/luigibyte" title="Twitter" target="_blank")
-            %a.facebook(href="http://www.facebook.com/luigi.ar" title="Facebook" target="_blank")
+          .contact-links
             %a.google(href="mailto:luigibyte@gmail.com" title="Gmail")
-            %a.delicious(href="http://delicious.com/elbyte" title="delicious" target="_blank")
             %a.mail(href="mailto:luigibyte@gmail.com" title="Email")      
         #menu.block
           %ul
@@ -45,8 +50,9 @@
           %form(action="" method="post" id="search")
             %input(type="text" name="q" value="ingrese texto")
             %input(type="hidden" name="sitesearch")
-          %a.rss{:href => FEED_URL, :title => "Suscribir Rss"}
-          %a.github(href="http://github.com/llopez" title="Github" target="_blank")   
+          #source-links
+            %a.rss{:href => FEED_URL, :title => "Suscribir Rss"}
+            %a.github(href="http://github.com/llopez/llopez-blog" title="Github" target="_blank")   
       .clear
       #main
         ~ content

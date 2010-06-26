@@ -53,7 +53,6 @@ body
       margin-left: 0.5em
       .block
         display: block
-        //border: 1px solid 
     #terminal
       float: left
       .post
@@ -62,6 +61,7 @@ body
         background: url(/images/bg_terminal.png)
         color: #bbb
         padding: 1em
+        border: 1px solid #999
         a
           text-decoration: none
           color: white
@@ -100,6 +100,11 @@ body
         font-size: 1.3em
         font-weight: bold
         background: url(/images/textura-titulo-terminal.png) repeat-x
+        .left
+          float: left
+          padding: 0.3em
+        .share
+          float: right
 
 .clear
   clear: both
@@ -157,42 +162,53 @@ a.category
   height: 30px  
   background-image: url(/images/min.jpg)
 
-.twitter
-  @include rounded(0.5em)
-  @extend .social-icon
-  background-position: 337px 102px
+.share-icon
+  margin: 0.2em
+  float: left
+  background-image: url(/images/min.jpg)
+  border: 2px solid black
+  width: 18px
+  height: 18px
   
+.twitter
+  @include rounded(0.3em)
+  @extend .share-icon
+  background-position: 366px 95px
 .facebook
-  @include rounded(0.5em)
-  @extend .social-icon
-  background-position: 51px 206px
-	
+  @include rounded(0.3em)
+  @extend .share-icon
+  background-position: 80px 199px
+.delicious
+  @include rounded(0.3em)
+  @extend .share-icon
+  background-position: 80px 251px
+ 	
 .google
   @include rounded(0.5em)
   @extend .social-icon
   background-position: 146px 154px
-.delicious
-  @include rounded(0.5em)
-  @extend .social-icon
-  background-position: 51px 258px
+
 .mail
   @include rounded(0.5em)
   @extend .social-icon
   background-position: 146px 205px
-.github
-  margin: 0.2em
-  float: left
-  background: url(/images/github-icon.png) no-repeat
-  background-position: -4px -6px
-  width: 40px
-  height: 40px
-.rss
-  float: left
-  @include rounded(0.7em)
-  background: url(/images/rss.gif) no-repeat
-  background-position: -4px -4px  
-  width: 41px
-  height: 41px  
+  
+#source-links   
+  padding: 0.5em
+  .github
+    margin: 0.2em
+    float: left
+    background: url(/images/github-icon.png) no-repeat
+    background-position: -4px -6px
+    width: 40px
+    height: 40px
+  .rss
+    float: left
+    @include rounded(0.7em)
+    background: url(/images/rss.gif) no-repeat
+    background-position: -4px -4px  
+    width: 41px
+    height: 41px  
   
 
 img.avatar
