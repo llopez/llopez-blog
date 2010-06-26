@@ -3,13 +3,13 @@
   %head
     %link{:href => "/css/base.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "/css/accordion.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
-    %link{ :href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
+    %link{:href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
     %meta{'name' => 'description', :content => 'Es un blog personal de programación'}
-    %meta{'name' => 'keywords', :content => 'blog, BLOG, Blog, Programación, PROGRAMACION, programación, Ruby, ruby, RUBY, Rails, RAILS, rails, jquery, Jquery, JQUERY, BASH, Bash, Gratis, GRATIS, gratuito, free, Free, FREE, Tecnología, TECNOLOGIA, nestor luis lopez'}
+    %meta{'name' => 'keywords', :content => "#{tags(site)}, blog, BLOG, Blog, Programación, PROGRAMACION, programación, Ruby, ruby, RUBY, Rails, RAILS, rails, jquery, Jquery, JQUERY, BASH, Bash, Gratis, GRATIS, gratuito, free, Free, FREE, Tecnología, TECNOLOGIA, nestor luis lopez"}
     %meta{'name' => 'copyright', :content => 'Luis Lopez'}
     %meta{'name' => 'robots', :content => 'FOLLOW,INDEX'}
     %meta{'name' => 'googlebot', :content => 'FOLLOW,INDEX'}
-    %meta{ 'http-equiv' => "Content-Language", :content=>"es-AR"}
+    %meta{'http-equiv' => "Content-Language", :content=>"es-AR"}
     %title
       Llopez Blog
     %script(src="/js/jquery-1.4.2.min.js")
@@ -49,7 +49,7 @@
         #search-block
           %form(action="" method="post" id="search")
             %input(type="text" name="q" value="ingrese texto")
-            %input(type="hidden" name="sitesearch")
+            %input(type="hidden" name="sitesearch" value="#{DOMAIN_URL}")
           #source-links
             %a.rss{:href => FEED_URL, :title => "Suscribir Rss"}
             %a.github(href="http://github.com/llopez/llopez-blog" title="Github" target="_blank")   
@@ -61,7 +61,7 @@
         .left
           >_  &copy; Llopez-Blog copyright 2010.
         .right
-          mejor visto con -> firefox - chrome
+          {mejor_visto_con => [firefox , chrome]}
         .clear
 
     <script type="text/javascript">
