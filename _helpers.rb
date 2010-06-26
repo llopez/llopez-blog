@@ -1,5 +1,6 @@
 require 'haml-coderay'
-FEED_URL = "http://www.llopez.local.com.ar/feed/atom.xml"
+DOMAIN_URL = "http://llopez.heroku.com"  
+FEED_URL = "/feed/atom.xml"
 module Helpers
   #def render(options = {}) 
   #end
@@ -11,6 +12,11 @@ module Helpers
     options.merge!({:src => "/images/#{image_path}"})
     haml_tag :img, options
   end
+  
+  def tags(page)
+    page.tags.join(",")
+  end
+  
   def title(page)
   ">_ /posts/" + page.categories.join("/") + "/" + page.title.gsub(" ","_")
   end
