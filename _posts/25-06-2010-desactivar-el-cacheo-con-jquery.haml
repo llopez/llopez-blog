@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Desactivar el cacheo con Jquery
+desc: Metodo jquery para desactivar el cacheo en los request jquery
 categories:
 - jquery
 - rails
@@ -9,16 +10,50 @@ categories:
 %h1 Desactivar el cacheo con Jquery
 
 %p
-  Me ha pasado desarrollando un sistema de consulta de estados de cuenta, que una vez actualizados los datos de 
-  la cuenta, no me regrescaba la informacion que consultaba el cliente del otro lado.
+  Trabajando en el desarrollo de un sistema interno para mi empresa, que realiza la importaci&oacute;n de datos 
+  de cuentas cliente hacia una aplicaci&oacute;n Rails de consulta de estados.
+  Me tope con un problema de cacheo.
   
 %p
-  La consulta de la informacion se hace por medios de un par de Combos de seleccion encadenados.
-  Me estaba valiendo del metodo de jquery *$.getJson*, pero este siempre me devolvia 304, y por consiguiente
-  no me mostraba los cambios en el estado de la cuenta.    
+  La consulta de la informaci&oacute;n se hace por medio de un par de Combos de selecci&oacute;n encadenados.
+  Me estaba valiendo del metodo de jquery $.getJson, pero este siempre me devolvia 304, y por consiguiente
+  no me mostraba la informaci&oacute;n actualizada.
+
+%p C&oacute;digo de consulta:
+:coderay
+  #!Javascript
+  
+  function obtenerCuentas(empresa, proveedor, select_element) {
+    $.getJSON("/oper/cuentas?cuenta[empresa_id]=" + empresa + "&cuenta[proveedor_id]=" + proveedor , function(response){
+      var items="";
+      for (var i = 0; i < response.length; i++) {
+        items += "<option value="+ response[i].cuenta.id + (i == 0? ' selected=selected':'') + ">"+ response[i].cuenta.nombre +" </option>";
+      }
+      select_element.html( items );
+      cargarDatosDeCuenta( response[0].cuenta.id , $('#resultados') );
+    });
+  }
   
 %p
-  Esto era porque en Rails en entornos que no son de desarrollo utiliza cacheo.  
+  Esto ocurria porque Rails en entornos que no son de desarrollo, STAGING - PRODUCTION, utiliza cacheo para mejorar
+  la performance de la aplicaci&oacute;n.
   
+%strong La soluci&oacute;n:
+%p
+  Agregar dentro del request el c&oacute;digo:
+  $.ajaxSetup({ cache: false });
+ 
+:coderay
+  #!Javascript
   
-bla bla seguir en casa.  
+  function obtenerCuentas(empresa, proveedor, select_element) {
+    $.getJSON("/oper/cuentas?cuenta[empresa_id]=" + empresa + "&cuenta[proveedor_id]=" + proveedor , function(response){
+      var items="";
+      for (var i = 0; i < response.length; i++) {
+        items += "<option value="+ response[i].cuenta.id + (i == 0? ' selected=selected':'') + ">"+ response[i].cuenta.nombre +" </option>";
+      }
+      $.ajaxSetup({ cache: false });
+      select_element.html( items );
+      cargarDatosDeCuenta( response[0].cuenta.id , $('#resultados') );
+    });
+  }  
