@@ -10,6 +10,8 @@
     %meta{'name' => 'robots', :content => 'FOLLOW,INDEX'}
     %meta{'name' => 'googlebot', :content => 'FOLLOW,INDEX'}
     %meta{'http-equiv' => "Content-Language", :content=>"es-AR"}
+    %meta{:name => "google-site-verification", :content => "f_Tjpx8iAHoa647ibklC-wYpEBKRhu1NkepTP2Cw8tE"}
+    
     %title
       Llopez Blog
     %script(src="/js/jquery-1.4.2.min.js")
@@ -24,11 +26,11 @@
       #header
         .block.logo
           %h1
-            %a(href="/" title="Home")
-              >_ Llopez-Blog
+            %a(href="/" title="ir a inicio")
+              >_ Llopez@blog
           .contact-links
-            %a.google(href="mailto:luigibyte@gmail.com" title="Gmail")
-            %a.mail(href="mailto:luigibyte@gmail.com" title="Email")      
+            %a.google(href="mailto:luigibyte@gmail.com" title="enviar correo a gmail")
+            %a.mail(href="mailto:luigibyte@gmail.com" title="enviar email")      
         #menu.block
           %ul
             .column
@@ -47,7 +49,7 @@
               %li
                 %a(href = "/contacto.html") Contacto
         #search-block
-          %form(action="" method="post" id="search")
+          %form(action="http://www.google.com/search" method="get" id="search")
             %input(type="text" name="q" value="ingrese texto")
             %input(type="hidden" name="sitesearch" value="#{DOMAIN_URL}")
           #source-links
@@ -59,7 +61,7 @@
         .clear
       #footer
         .left
-          >_  &copy; Llopez-Blog copyright 2010.
+          >_  &copy; llopezblog.com.ar - copyright 2010.
         .right
           {mejor_visto_con => [firefox , chrome]}
         .clear
@@ -74,15 +76,3 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
     </script>
-        
-    :javascript
-          (function() {
-          var links = document.getElementsByTagName('a');
-          var query = '?';
-          for(var i = 0; i < links.length; i++) {
-          if(links[i].href.indexOf('#disqus_thread') >= 0) {
-          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-          }
-          }
-          document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/llopez-blog/get_num_replies.js' + query + '"></' + 'script>');
-          })();
