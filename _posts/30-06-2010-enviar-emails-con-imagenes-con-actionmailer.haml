@@ -1,0 +1,78 @@
+---
+layout: post
+title: ActionMailer incluyendo im&aacute;genes.
+desc: Plugin para adjuntar im&aacute;genes en los emails de ActionMailer
+tags: [ruby, rails, plugin, actionmailer, inline_attachment]
+categories:
+- rails
+- ruby
+- plugin
+---
+
+%h1 
+  Enviar emails con ActionMailer incluyendo im&aacute;genes.
+%p
+  Ok, el envio de emails en una aplicaci&oacute;n Rails generalmente esta manejado por la gema actionmailer. Personalmente,
+  a la hora de incluir imagenes en mis emails, tube problemas, me parecia demasiado complicado de configurar.
+%p
+  Finalmente el dia de hoy, dedique casi todo mi dia laboral a poner lindos los emails que manda la aplicaci&oacute;n en la que
+  estoy trabajando.
+%p
+  Investigue bastante ActionMailer y como de costumbre llege a la conclusi&oacute;n que era demasiado.
+%p
+  Asi que busque una alternativa, un plugin en github: 
+  %strong
+    %a(href="http://github.com/JasonKing/inline_attachment" title="repositorio en github") 
+      inline_attachment
+
+%strong 
+  Instalaci&oacute;n:
+
+%p como una gema:
+:coderay
+  #!plain
+  gem install inline_attachment
+
+%p como un plugin:
+:coderay
+  #!plain
+  script/plugin install git://github.com/JasonKing/inline_attachment.git
+
+%strong Uso:
+%p
+  config/environment.rb
+  
+:coderay
+  #!ruby
+  config.gem 'inline_attachment'
+
+%p
+  La configuraci&oacute;n del modelo es la misma, no hay que cambiar nada de nada.
+
+%p user_mailer.rb
+
+:coderay
+  #!ruby
+  class UserMailer < ActionMailer::Base
+    def notificacion()
+      subject       "Hola Mundo!!"
+      from          info@llopezblog.com.ar
+      recipients    calle@falsa.com.ar
+      sent_on       Time.zone.now
+      content_type  "text/html"    
+      body          :title => "El titulo", :name => "Luis"
+    end
+  end
+  
+%p
+  Luego simplemente para adjuntar im&aacute;genes en la vista del mail, utilizamos el helper image_tag.
+  
+%p notificacion.text.html.erb
+
+:coderay
+  #!html
+  <p> Texto del email </p>
+  <%= image_tag 'logo.png' %>
+  
+%p
+  El nombre de archivo de la vista, est&aacute; en formato multipart "nombre_metodo.text.html.erb"

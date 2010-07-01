@@ -23,7 +23,6 @@ tags: [bash, consola, comando, ls]
   export LSCOLORS=exfxcxdxbxegedabagacad
   alias ls='ls -G'
 
-
 %p
   Con la variable LSCOLORS, le estamos diciendo al sistema que color queremos para cada tipo de elemento y con
   el alias estamos activando los colores.
@@ -31,38 +30,70 @@ tags: [bash, consola, comando, ls]
   El formato de la variable LSCOLORS, es posicional y consta de un par de d&iacute;gitos para describir el color de la letra 
   y el color del fondo del elemento, en este orden (LETRA-FONDO).
 
-:coderay
-  #!plain
-  1.   directory
-  2.   symbolic link
-  3.   socket
-  4.   pipe
-  5.   executable
-  6.   block special
-  7.   character special
-  8.   executable with setuid bit set
-  9.   executable with setgid bit set
-  10.  directory writable to others, with sticky bit
-  11.  directory writable to others, without sticky bit  
+%p
+  La descripcion de estos pares, se le de izquierza a derecha y es la siguiente:
+  directory, symbolic link, socket, pipe, executable, block special, character special, executable with setuid bit set, 
+  executable with setgid bit set, directory writable to others with sticky bit, 
+  directory writable to others without sticky bit  
 
 %p Los colores son los siguientes.
 
-:coderay
-  #!plain  
-  a -> black
-  b -> red
-  c -> green
-  d -> brown
-  e -> blue
-  f -> magenta
-  g -> cyan
-  h -> light grey
-  A -> bold black, usually shows up as dark grey
-  B -> bold red
-  C -> bold green
-  D -> bold brown, usually shows up as yellow
-  E -> bold blue
-  F -> bold magenta
+.columna
+  %table.tabla
+    %tr
+      %th D&iacute;gito
+      %th Color
+    %tr
+      %td a
+      %td.negro negro
+    %tr
+      %td b
+      %td.rojo rojo
+    %tr
+      %td c
+      %td.verde verde
+    %tr
+      %td d
+      %td.marron marron
+    %tr
+      %td e
+      %td.azul azul
+    %tr
+      %td f
+      %td.magenta magenta
+    %tr
+      %td g
+      %td.cian cian
+    %tr
+      %td h
+      %td.gris gris claro
+
+
+.columna
+  %table.tabla
+    %tr
+      %th D&iacute;gito
+      %th Color
+    %tr
+      %td A
+      %td.negro.bold negro en negrita 
+    %tr
+      %td B
+      %td.rojo.bold rojo en negrita
+    %tr
+      %td C
+      %td.verde.bold verde en negrita
+    %tr
+      %td D
+      %td.marron.bold marron en negrita
+    %tr
+      %td E
+      %td.azul.bold azul en negrita
+    %tr
+      %td F
+      %td.magenta.bold magenta en negrita
+
+.clear
 
 %strong Si lo ponemos en pr&aacute;ctica.
 %p
