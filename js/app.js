@@ -15,5 +15,16 @@ $(function(){
   
   $("#proyectos").accordion();
   
+//  $(".boxy").boxy({modal:true, closeText: 'cerrar'});
+
+  $('.link-script').livequery('click', function(){
+    $.getScript(this.href); return false;
+  });
+
+  $(".boxy-wrapper form").livequery(function() {
+    boxy_form = this;
+    $(this).ajaxForm({ dataType: 'script', success: function() { Boxy.get(boxy_form).hide().unload(); } } );
+  });
+
   
 });

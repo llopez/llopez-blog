@@ -3,6 +3,7 @@
   %head
     %link{:href => "/css/base.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "/css/accordion.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "/css/boxy.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
     %meta{'name' => 'description', :content => 'Es un blog personal de programación'}
     %meta{'name' => 'keywords', :content => "#{tags(site)}, blog, BLOG, Blog, Programación, PROGRAMACION, programación, Ruby, ruby, RUBY, Rails, RAILS, rails, jquery, Jquery, JQUERY, BASH, Bash, Gratis, GRATIS, gratuito, free, Free, FREE, Tecnología, TECNOLOGIA, nestor luis lopez"}
@@ -15,6 +16,9 @@
     %title
       Llopez Blog
     %script(src="/js/jquery-1.4.2.min.js")
+    %script(src="/js/jquery.livequery.js")
+    %script(src="/js/jquery.form.js")
+    %script(src="/js/jquery.boxy.js")
     %script(src="/js/jquery-ui.min.js")
     %script(src="/js/jquery.twitter.js")
     %script(src="/js/app.js")
@@ -47,7 +51,7 @@
               %li
                 %a{:href => "/"} Sitios amigos
               %li
-                %a(href = "/contacto") Contacto
+                %a(href = "/contacto" class="link-script" title="Formulario de contacto") Contacto
         #search-block
           %form(action="http://www.google.com/search" method="get" id="search")
             %input(type="text" name="q" value="ingrese texto")
