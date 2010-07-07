@@ -3,6 +3,7 @@ $(function(){
     $(this).val("");
   });
   
+  
 	$("#twitter").getTwitter({
 		userName: "luigibyte",
 		numTweets: 5,
@@ -26,5 +27,15 @@ $(function(){
     $(this).ajaxForm({ dataType: 'script', success: function() { Boxy.get(boxy_form).hide().unload(); } } );
   });
 
+  var config = {
+    api_key: '1f31ff222d274de4545ab666dd98d6b6',
+    link_to_size: 'm'
+  }	      
   
+  $("#images a").livequery(function(){
+    $(this).lightBox();
+  });  
+    
+  $('#images').flickr(config).photosetsGetPhotos({photoset_id: '72157624202381551', per_page: 10});
+    
 });
