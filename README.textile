@@ -1,5 +1,17 @@
-h1. My blog made with Jekyll and Sinatra
+h1. My blog made with Jekyll
 
 My Blog using *jekyll*, a static site generator written in *Ruby*.
 
-"llopez.heroku.com (myblog)":http://llopez.heroku.com
+"llopezblog.com.ar (myblog)":http://llopezblog.com.ar
+
+h2. Instalation:
+
+$ git clone git://github.com/llopez/llopez-blog.git
+
+h2. Building the site:
+
+$ jekyll
+
+This will generate the _site directory.
+
+*THE END*
