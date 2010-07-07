@@ -1,12 +1,6 @@
 ---
 layout: base
+tags: ['galeria', 'fotos', 'imagenes']
+desc: Galeria de fotos
 ---
-
-%script
-  $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?id=22453589@N08&lang=en-us&format=json&tags=sol&jsoncallback=?", function(data){
-  $.each(data.items, function(i,item){
-  $("<img/>").attr("src", item.media.m).appendTo("#images").wrap("<a href='" + item.link + "'></a>");
-  });
-  });
-  
 #images
