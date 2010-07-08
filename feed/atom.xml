@@ -4,22 +4,22 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Llopes's Blog</title>
- <link href="http://www.llopez.local.com.ar/atom.xml" rel="self"/>
- <link href="http://www.llopez.local.com.ar/"/>
+ <title>Llopez@Blog</title>
+ <link href="http://www.llopezblog.com.ar/atom.xml" rel="self"/>
+ <link href="http://www.llopezblog.com.ar/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://www.llopez.local.com.ar/</id>
+ <id>http://www.llopezblog.com.ar/</id>
  <author>
-   <name>Llopez</name>
+   <name>Luis Lopez</name>
    <email>luigibyte@gmail.com</email>
  </author>
 
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://www.llopez.local.com.ar{{ post.url }}"/>
+   <link href="http://www.llopezblog.com.ar{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://www.llopez.local.com.ar{{ post.id }}</id>
+   <id>http://www.llopezblog.com.ar{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
