@@ -4,9 +4,11 @@
     %link{:href => "/css/base.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "/css/accordion.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "/css/boxy.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "/css/jquery.lightbox-0.5.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+
     %link{:href => FEED_URL, :rel => "alternate", :title => "Llopez", :type => "application/atom+xml" }    
-    %meta{'name' => 'description', :content => 'Es un blog personal de programación'}
-    %meta{'name' => 'keywords', :content => "#{tags(site)}, blog, BLOG, Blog, Programación, PROGRAMACION, programación, Ruby, ruby, RUBY, Rails, RAILS, rails, jquery, Jquery, JQUERY, BASH, Bash, Gratis, GRATIS, gratuito, free, Free, FREE, Tecnología, TECNOLOGIA, nestor luis lopez"}
+    %meta{'name' => 'description', :content => "#{page.desc}"}
+    %meta{:name => 'keywords', :content => "#{meta_tags(page, site)}"}
     %meta{'name' => 'copyright', :content => 'Luis Lopez'}
     %meta{'name' => 'robots', :content => 'FOLLOW,INDEX'}
     %meta{'name' => 'googlebot', :content => 'FOLLOW,INDEX'}
@@ -19,6 +21,8 @@
     %script(src="/js/jquery.livequery.js")
     %script(src="/js/jquery.form.js")
     %script(src="/js/jquery.boxy.js")
+    %script(src="/js/jquery.flickr.js")
+    %script(src="/js/jquery.lightbox-0.5.min.js")
     %script(src="/js/jquery-ui.min.js")
     %script(src="/js/jquery.twitter.js")
     %script(src="/js/app.js")
@@ -49,20 +53,26 @@
                 %a(href = "/galeria.html") Galer&iacute;a
             .column
               %li
-                %a{:href => "/"} Sitios amigos
+                %a{:href => "/"} Archivos
               %li
                 %a(href = "/contacto" class="link-script" title="Formulario de contacto") Contacto
         #search-block
-          %form(action="http://www.google.com/search" method="get" id="search")
-            %input(type="text" name="q" value="ingrese texto")
-            %input(type="hidden" name="sitesearch" value="#{DOMAIN_URL}")
+          %form(action="http://search.freefind.com/find.html" method="get" id="search" accept-charset="utf-8" target="_blank")
+            <input type="hidden" name="si" value="13302499">
+            <input type="hidden" name="pid" value="r">
+            <input type="hidden" name="n" value="0">
+            <input type="hidden" name="_charset_" value="">
+            <input type="hidden" name="bcd" value="&#247;">
+            <input type="text" name="query" size="15"> 
           #source-links
             %a.rss{:href => FEED_URL, :title => "Suscribir Rss"}
-            %a.github(href="http://github.com/llopez/llopez-blog" title="Github" target="_blank")   
+            %a.github(href="http://github.com/llopez/llopez-blog" title="este sitio en github" target="_blank")   
       .clear
       #main
         ~ content
         .clear
+      #global-spinner  
+        - image "ajax_activity_indicator.gif"
       #footer
         .left
           >_  &copy; llopezblog.com.ar - copyright 2010.
