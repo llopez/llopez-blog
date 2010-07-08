@@ -1,4 +1,12 @@
 $(function(){
+  
+  $('#global-spinner').ajaxStart(function() {
+    $(this).show();
+  });
+  $('#global-spinner').ajaxStop(function() {
+    $(this).hide();
+  });  
+  
   $("form#search input[type=text]").click(function(){
     $(this).val("");
   });
